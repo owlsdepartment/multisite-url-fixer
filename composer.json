@@ -1,13 +1,13 @@
 {
-  "name": "ingenyus/multisite-url-fixer",
+  "name": "owlsdepartment/multisite-url-fixer",
   "type": "wordpress-muplugin",
   "license": "MIT",
   "description":
     "Fixes WordPress issues with home and site URL on multisite when using Bedrock",
-  "homepage": "https://github.com/Genyus/multisite-url-fixer/",
+  "homepage": "https://github.com/owlsdepartment/multisite-url-fixer/",
   "keywords": ["wordpress"],
   "support": {
-    "issues": "https://github.com/roots/multisite-url-fixer/issues"
+    "issues": "https://github.com/owlsdepartment/multisite-url-fixer/issues"
   },
   "autoload": {
     "psr-4": {
@@ -15,7 +15,7 @@
     }
   },
   "require": {
-    "php": ">=7.0.0"
+    "php": ">=7.4.0"
   },
   "require-dev": {
     "squizlabs/php_codesniffer": "^3.1"
