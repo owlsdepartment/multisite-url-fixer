@@ -10,6 +10,13 @@ namespace Roots\Bedrock;
  */
 class URLFixer
 {
+    private string $base;
+    
+    public function __construct()
+    {
+        $this->base = defined('WP_BASE') ? trim(WP_BASE, '/') : 'wp';
+    }
+    
     /**
      * Add filters to verify / fix URLs.
      */
@@ -28,7 +35,7 @@ class URLFixer
      */
     public function fixHomeURL($value)
     {
-        if (substr($value, -3) === '/wp') {
+        if (substr($value, -3) === '/' . $this->base) {
             $value = substr($value, 0, -3);
         }
         return $value;
@@ -42,8 +49,8 @@ class URLFixer
      */
     public function fixSiteURL($url)
     {
-        if (substr($url, -3) !== '/wp' && (is_main_site() || is_subdomain_install())) {
-            $url .= '/wp';
+        if (substr($url, -3) !== '/' . $this->base && (is_main_site() || is_subdomain_install())) {
+            $url .= '/' . $this->base;
         }
         return $url;
     }
@@ -61,8 +68,8 @@ class URLFixer
         $path = ltrim($path, '/');
         $url = substr($url, 0, strlen($url) - strlen($path));
 
-        if (substr($url, -3) !== 'wp/') {
-            $url .= 'wp/';
+        if (substr($url, -3) !== $this->base . '/') {
+            $url .= $this->base . '/';
         }
 
         return $url . $path;
